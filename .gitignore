@@ -1,0 +1,15 @@
+node_modules
+.env
+.env.*
+!.env.example
+.next
+dist
+coverage
+.DS_Store
+*.log
+pnpm-lock.yaml
+npm-debug.log*
+yarn-error.log*
+frontend/.next
+frontend/node_modules
+backend/node_modules
