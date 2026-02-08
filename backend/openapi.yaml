@@ -1,0 +1,87 @@
+openapi: 3.0.3
+info:
+  title: Smart Inventory Management API
+  version: 0.1.0
+servers:
+  - url: http://localhost:4000/api
+components:
+  securitySchemes:
+    bearerAuth:
+      type: http
+      scheme: bearer
+      bearerFormat: JWT
+security:
+  - bearerAuth: []
+paths:
+  /auth/register:
+    post:
+      summary: Register tenant and admin user
+  /auth/login:
+    post:
+      summary: Login user
+  /auth/refresh:
+    post:
+      summary: Refresh access token
+  /assets:
+    get:
+      summary: List assets
+    post:
+      summary: Create asset
+  /assets/{id}:
+    get:
+      summary: Get asset details
+    put:
+      summary: Update asset
+    delete:
+      summary: Retire asset
+  /assets/search:
+    get:
+      summary: Search assets and assignees
+  /assets/{id}/assign:
+    post:
+      summary: Assign asset
+  /assets/{id}/return:
+    post:
+      summary: Return asset
+  /assignments:
+    get:
+      summary: List assignments
+  /requests:
+    get:
+      summary: List requests
+    post:
+      summary: Create request
+  /requests/{id}/approve:
+    put:
+      summary: Approve request
+  /requests/{id}/reject:
+    put:
+      summary: Reject request
+  /requests/{id}/fulfill:
+    put:
+      summary: Fulfill request
+  /users:
+    get:
+      summary: List users
+    post:
+      summary: Create user
+  /users/{id}:
+    get:
+      summary: Get user details
+    put:
+      summary: Update user
+  /users/{id}/assets:
+    get:
+      summary: List assets assigned to a user
+  /reports/inventory:
+    get:
+      summary: Inventory snapshot
+  /reports/assignments:
+    get:
+      summary: Assignment history
+  /reports/audit:
+    get:
+      summary: Audit trail
+  /dashboard/stats:
+    get:
+      summary: Dashboard metrics
