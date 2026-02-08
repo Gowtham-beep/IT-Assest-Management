@@ -60,9 +60,9 @@ export async function login(req: Request, res: Response) {
     role: "admin" | "it_staff" | "manager" | "employee";
   }>("SELECT id, tenant_id, email, password_hash, role FROM users WHERE email = $1", [email]);
 
-  if (!user) return fail(res, 401, "Invalid credentials");
+  if (!user) return fail(res, 404, "User does not exist");
   const valid = await bcrypt.compare(password, user.password_hash);
-  if (!valid) return fail(res, 401, "Invalid credentials");
+  if (!valid) return fail(res, 401, "Invalid password");
 
   const payload = { sub: user.id, tenantId: user.tenant_id, role: user.role, email: user.email };
   const accessToken = signAccessToken(payload);
